@@ -1774,7 +1774,7 @@ h2 {
     padding: 10px 12px;
   }
   .news-track {
-    grid-auto-columns: minmax(0, 88%);
+    grid-auto-columns: 88%;
     gap: 14px;
   }
   .news-track .news-card {
