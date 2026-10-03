@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import Icon from "./Icon.vue";
+import { formatDate, irkutskBrief } from "../data/content";
 
 const query = ref("");
 const error = ref("");
@@ -37,9 +38,9 @@ function checkCity() {
 <template>
   <section class="city-check content-section" aria-labelledby="city-heading">
     <div class="city-intro">
-      <p class="eyebrow">МИНУТКА НЕСЕРЬЁЗНОСТИ</p>
-      <h2 id="city-heading">Есть ли у вас чума в городе?</h2>
-      <p>Введите город или адрес. Ответим с юмором.</p>
+      <p class="eyebrow">СВЕДЕНИЯ ИЗ ПУБЛИКАЦИЙ</p>
+      <h2 id="city-heading">Что известно по вашему городу?</h2>
+      <p>Введите город или адрес. Покажем сведения из подборки.</p>
     </div>
     <form class="city-form" @submit.prevent="checkCity">
       <label for="city-query">Город или адрес</label>
@@ -64,7 +65,7 @@ function checkCity() {
         </button>
       </div>
       <p id="city-note" class="city-note">
-        Шуточный поиск. Введённый адрес не проверяется — чайный режим включён.
+        Поиск по опубликованной подборке. Ввод остаётся в вашем браузере.
       </p>
       <p v-if="error" id="city-error" class="city-error" role="alert">
         {{ error }}
@@ -79,35 +80,52 @@ function checkCity() {
       aria-atomic="true"
     >
       <div class="city-result-copy">
-        <span class="news-category">ШУТОЧНЫЙ ОТВЕТ</span>
+        <span class="news-category">{{
+          result.isIrkutsk ? "ПО СООБЩЕНИЯМ ВЛАСТЕЙ" : "СВЕДЕНИЯ В ПОДБОРКЕ"
+        }}</span>
         <p class="city-result-query">{{ result.city }}</p>
         <h3>
           {{
             result.isIrkutsk
-              ? "Иркутск, у вас особый чайный режим."
-              : "По нашей шуточной карте — всё спокойно!"
+              ? irkutskBrief.title
+              : "В подборке пока нет сведений по этому городу."
           }}
         </h3>
-        <p>
-          {{
-            result.isIrkutsk
-              ? "Наш персонаж уже надел костюм и отправился за чаем. Новости читаем, панику оставляем за кадром."
-              : "Чума на нашей карте не отметилась. Пусть так и остаётся — а вы пока заваривайте чай."
-          }}
+        <template v-if="result.isIrkutsk">
+          <p class="city-brief-date">
+            Сообщения от
+            <time :datetime="irkutskBrief.publishedAt">{{
+              formatDate(irkutskBrief.publishedAt)
+            }}</time>
+            · Проверено
+            <time :datetime="irkutskBrief.checkedAt">{{
+              formatDate(irkutskBrief.checkedAt)
+            }}</time>
+          </p>
+          <ul class="city-brief-list">
+            <li v-for="item in irkutskBrief.items" :key="item">{{ item }}</li>
+          </ul>
+          <p class="city-brief-note">{{ irkutskBrief.note }}</p>
+          <div class="city-brief-sources">
+            <a
+              v-for="source in irkutskBrief.sources"
+              :key="source.url"
+              :href="source.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{{ source.label }} <Icon name="external"
+            /></a>
+          </div>
+          <small
+            >Краткий пересказ опубликованных сообщений. Сайт не является
+            официальным каналом оповещения.</small
+          >
+        </template>
+        <p v-else>
+          Отсутствие записи не означает отсутствия заболевания. Здесь нет
+          непрерывного мониторинга эпидемиологической ситуации.
         </p>
-        <small>Игровой ответ, не эпидемиологическая сводка.</small>
       </div>
-      <figure v-if="result.isIrkutsk" class="city-character">
-        <img
-          src="/images/irkutsk-tea.png"
-          alt="Вымышленный персонаж в защитном костюме с кружкой чая"
-          width="1254"
-          height="1254"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption>Вымышленный персонаж · иллюстрация</figcaption>
-      </figure>
     </div>
   </section>
 </template>

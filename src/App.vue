@@ -5,6 +5,18 @@ import Icon from "./components/Icon.vue";
 import { site } from "./data/content";
 const route = useRoute();
 const easterEggOpen = ref(false);
+const musicDialog = ref<HTMLDialogElement>();
+function openMusic() {
+  if (!musicDialog.value || musicDialog.value.open) return;
+  musicDialog.value.showModal();
+  easterEggOpen.value = true;
+}
+function closeMusic() {
+  musicDialog.value?.close();
+}
+function closeOnBackdrop(event: MouseEvent) {
+  if (event.target === musicDialog.value) closeMusic();
+}
 const activeSection = ref("map");
 const navigation = [
   { id: "map", label: "Карта" },
@@ -33,6 +45,7 @@ watch(
   () => route.fullPath,
   async () => {
     easterEggOpen.value = false;
+    if (musicDialog.value?.open) closeMusic();
     activeSection.value = navigation.some(
       (item) => `#${item.id}` === route.hash,
     )
@@ -96,28 +109,49 @@ onBeforeUnmount(() => {
         ></RouterLink
       >
       <nav class="footer-links" aria-label="О сайте">
-        <RouterLink to="/project/">О проекте</RouterLink
-        ><RouterLink to="/rules/">Правила</RouterLink
-        ><a :href="site.issuesUrl" target="_blank" rel="noopener noreferrer"
-          >Сообщить о неточности</a
-        >
+        <a href="/project/">О проекте</a><a href="/rules/">Правила</a>
       </nav>
       <button
         class="easter-egg"
         type="button"
         :aria-expanded="easterEggOpen"
         aria-controls="vova-track"
-        @click="easterEggOpen = !easterEggOpen"
+        aria-haspopup="dialog"
+        @click="openMusic"
       >
         <Icon name="music" /> Чума?
       </button>
       <p class="footer-caption">© 2026 · Сделано с юмором. Читать с головой.</p>
     </div>
-    <div v-if="easterEggOpen" id="vova-track" class="easter-egg-content">
-      <span>Та самая чума, которую можно послушать.</span
-      ><a :href="site.songUrl" target="_blank" rel="noopener noreferrer"
-        >Иракли — «Вова-чума» <Icon name="external"
-      /></a>
-    </div>
   </footer>
+  <dialog
+    id="vova-track"
+    ref="musicDialog"
+    class="music-dialog"
+    aria-labelledby="music-title"
+    @close="easterEggOpen = false"
+    @click="closeOnBackdrop"
+  >
+    <button
+      class="music-close"
+      type="button"
+      aria-label="Закрыть музыкальную пасхалку"
+      @click="closeMusic"
+    >
+      ×
+    </button>
+    <p class="eyebrow">МУЗЫКАЛЬНАЯ ПАСХАЛКА</p>
+    <h2 id="music-title">Та самая «Чума».</h2>
+    <p>Этот вариант можно просто послушать. Иракли — «Вова-чума».</p>
+    <a
+      class="button"
+      :href="site.songUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      >Открыть на YouTube <Icon name="external"
+    /></a>
+    <small
+      >Запись откроется по ссылке. Автоматического воспроизведения нет.</small
+    >
+  </dialog>
 </template>

@@ -1558,6 +1558,115 @@ h2 {
   min-height: 330px;
   scroll-snap-align: start;
 }
+
+@media (hover: hover) and (pointer: fine) {
+  .news-track {
+    cursor: grab;
+    user-select: none;
+  }
+}
+.news-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+}
+.news-track.is-dragging a {
+  cursor: grabbing;
+}
+.city-brief-date {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  margin-top: 14px;
+}
+.city-result .news-category {
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.city-brief-list {
+  padding-left: 22px;
+  margin: 18px 0;
+  color: #474b51;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+}
+.city-brief-list li + li {
+  margin-top: 11px;
+}
+.city-brief-note {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+.city-brief-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 22px;
+  margin-top: 18px;
+}
+.city-brief-sources a {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 0.8125rem;
+  color: var(--accent-dark);
+}
+.city-brief-sources .icon {
+  width: 14px;
+  height: 14px;
+}
+.music-dialog {
+  width: min(480px, calc(100% - 32px));
+  max-height: calc(100% - 32px);
+  overflow-y: auto;
+  padding: 34px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: #fff;
+  color: #232528;
+  box-shadow: 0 20px 100px #0002;
+}
+.music-dialog::backdrop {
+  background: #14181c99;
+}
+.music-dialog h2 {
+  font-size: 1.75rem;
+  margin: 14px 0;
+}
+.music-dialog > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+.music-dialog .button {
+  margin-top: 24px;
+}
+.music-dialog small {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 16px;
+}
+.music-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: #f3f4f5;
+  border-radius: 50%;
+  font-size: 1.5rem;
+}
+.music-close:hover {
+  background: #fff0e8;
+  color: var(--accent-dark);
+}
+@media (max-width: 760px) {
+  .music-dialog {
+    padding: 32px 23px 25px;
+  }
+}
 .about-intro {
   max-width: 760px;
   color: var(--muted);

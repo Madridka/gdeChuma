@@ -11,6 +11,63 @@ const track = ref<HTMLDivElement>();
 const canPrevious = ref(false);
 const canNext = ref(false);
 let observer: ResizeObserver | undefined;
+const isDragging = ref(false);
+let drag:
+  | {
+      pointerId: number;
+      startX: number;
+      startY: number;
+      scrollLeft: number;
+      moved: boolean;
+    }
+  | undefined;
+let suppressClick = false;
+function startDrag(event: PointerEvent) {
+  if (event.pointerType !== "mouse" || event.button !== 0 || !track.value)
+    return;
+  suppressClick = false;
+  drag = {
+    pointerId: event.pointerId,
+    startX: event.clientX,
+    startY: event.clientY,
+    scrollLeft: track.value.scrollLeft,
+    moved: false,
+  };
+  isDragging.value = true;
+}
+function moveDrag(event: PointerEvent) {
+  const element = track.value;
+  if (!drag || !element || event.pointerId !== drag.pointerId) return;
+  const distance = event.clientX - drag.startX;
+  if (!drag.moved) {
+    if (
+      Math.abs(distance) < 6 ||
+      Math.abs(distance) < Math.abs(event.clientY - drag.startY)
+    )
+      return;
+    drag.moved = true;
+    element.setPointerCapture(event.pointerId);
+  }
+  event.preventDefault();
+  element.scrollLeft = drag.scrollLeft - distance;
+}
+function endDrag(event: PointerEvent) {
+  if (!drag || drag.pointerId !== event.pointerId) return;
+  suppressClick = drag.moved && event.type === "pointerup";
+  drag = undefined;
+  isDragging.value = false;
+  if (track.value?.hasPointerCapture(event.pointerId))
+    track.value.releasePointerCapture(event.pointerId);
+}
+function leaveDrag(event: PointerEvent) {
+  if (!track.value?.hasPointerCapture(event.pointerId)) endDrag(event);
+}
+function guardClick(event: MouseEvent) {
+  if (!suppressClick || event.detail === 0) return;
+  suppressClick = false;
+  event.preventDefault();
+  event.stopPropagation();
+}
 function updateControls() {
   const element = track.value;
   if (!element) return;
@@ -77,10 +134,19 @@ onBeforeUnmount(() => observer?.disconnect());
       id="news-track"
       ref="track"
       class="news-track"
+      :class="{ 'is-dragging': isDragging }"
       tabindex="0"
       role="region"
       aria-label="Лента новостей. Прокручивайте стрелками или свайпом"
       @scroll.passive="updateControls"
+      @pointerdown="startDrag"
+      @pointermove="moveDrag"
+      @pointerup="endDrag"
+      @pointercancel="endDrag"
+      @pointerleave="leaveDrag"
+      @lostpointercapture="endDrag"
+      @click.capture="guardClick"
+      @dragstart.prevent
     >
       <article
         v-for="(item, index) in sortedNews"

@@ -21,8 +21,8 @@ export const router = createRouter({
     },
     { path: "/:pathMatch(.*)*", redirect: "/" },
   ],
-  scrollBehavior(to, _from, savedPosition) {
-    if (savedPosition) return savedPosition;
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) return { ...savedPosition, behavior: "instant" };
     const sectionAnchor =
       to.path === "/" && ["#map", "#news", "#about"].includes(to.hash);
     const ruleAnchor =
@@ -30,12 +30,17 @@ export const router = createRouter({
     if (sectionAnchor || ruleAnchor || to.hash === "#main") {
       return {
         el: to.hash,
+        behavior:
+          to.path !== from.path ||
+          matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "instant"
+            : "smooth",
         top:
           (document.querySelector(".site-header")?.getBoundingClientRect()
             .height ?? 90) + 20,
       };
     }
-    return { top: 0 };
+    return { top: 0, behavior: "instant" };
   },
 });
 router.beforeEach((to) =>
