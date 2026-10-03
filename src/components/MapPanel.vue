@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, defineAsyncComponent, ref } from "vue";
-import { formatDate, markerNotice, placeWord } from "../data/content";
+import { formatDate, markerNotice, placeWord, site } from "../data/content";
 import type { MapPoint } from "../data/content";
 import Icon from "./Icon.vue";
 
@@ -42,14 +42,24 @@ function focusIrkutsk() {
         :points="points"
         :selected-id="selectedId"
         :focus-request="focusRequest"
-        @select="selectedId = $event"
         @status="mapStatus = $event"
       />
       <div class="map-topbar">
         <span class="map-label"><Icon name="pin" /> Иркутск и окрестности</span>
-        <button class="map-locate" type="button" @click="focusIrkutsk">
-          <Icon name="crosshair" /> К Иркутску
-        </button>
+        <div class="map-actions">
+          <button
+            class="map-locate map-retry"
+            type="button"
+            @click="retry"
+            aria-label="Обновить карту"
+            title="Если карта не загрузилась, нажмите здесь"
+          >
+            <Icon name="refresh" />
+          </button>
+          <button class="map-locate" type="button" @click="focusIrkutsk">
+            <Icon name="crosshair" /> К Иркутску
+          </button>
+        </div>
       </div>
       <div v-if="mapStatus === 'loading'" class="map-message" role="status">
         Загружаем карту…
@@ -67,10 +77,6 @@ function focusIrkutsk() {
         <button class="button button-small" type="button" @click="retry">
           <Icon name="refresh" /> Повторить
         </button>
-      </div>
-      <div class="map-legend">
-        <span class="legend-pin"></span> Место из публикации
-        <span class="legend-separator">/</span> не оценка риска
       </div>
     </div>
 
@@ -126,6 +132,12 @@ function focusIrkutsk() {
       <p v-else class="place-description">Пока нет отмеченных мест.</p>
       <div class="editor-note">
         Точки выбирает автор проекта.<br />Пользовательских отметок нет.
+        <a
+          :href="site.map.externalUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Открыть место в Яндекс Картах <Icon name="external"
+        /></a>
       </div>
     </aside>
   </div>
