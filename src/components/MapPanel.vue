@@ -36,14 +36,7 @@ function focusIrkutsk() {
 
 <template>
   <div class="map-layout">
-    <div class="map-surface" aria-label="Карта мест, упомянутых в новостях">
-      <MapCanvas
-        :key="reloadKey"
-        :points="points"
-        :selected-id="selectedId"
-        :focus-request="focusRequest"
-        @status="mapStatus = $event"
-      />
+    <div class="map-column">
       <div class="map-topbar">
         <span class="map-label"><Icon name="pin" /> Иркутск и окрестности</span>
         <div class="map-actions">
@@ -52,7 +45,7 @@ function focusIrkutsk() {
             type="button"
             @click="retry"
             aria-label="Обновить карту"
-            title="Если карта не загрузилась, нажмите здесь"
+            title="Обновить карту"
           >
             <Icon name="refresh" />
           </button>
@@ -61,22 +54,31 @@ function focusIrkutsk() {
           </button>
         </div>
       </div>
-      <div v-if="mapStatus === 'loading'" class="map-message" role="status">
-        Загружаем карту…
-      </div>
-      <div
-        v-if="mapStatus === 'error'"
-        class="map-message map-error"
-        role="status"
-      >
-        <Icon name="info" />
-        <div>
-          <strong>Карта сейчас недоступна</strong>
-          <p>Адрес и источники доступны в карточке места.</p>
+      <div class="map-surface" aria-label="Карта мест, упомянутых в новостях">
+        <MapCanvas
+          :key="reloadKey"
+          :points="points"
+          :selected-id="selectedId"
+          :focus-request="focusRequest"
+          @status="mapStatus = $event"
+        />
+        <div v-if="mapStatus === 'loading'" class="map-message" role="status">
+          Загружаем карту…
         </div>
-        <button class="button button-small" type="button" @click="retry">
-          <Icon name="refresh" /> Повторить
-        </button>
+        <div
+          v-if="mapStatus === 'error'"
+          class="map-message map-error"
+          role="status"
+        >
+          <Icon name="info" />
+          <div>
+            <strong>Карта сейчас недоступна</strong>
+            <p>Адрес и источники доступны в карточке места.</p>
+          </div>
+          <button class="button button-small" type="button" @click="retry">
+            <Icon name="refresh" /> Повторить
+          </button>
+        </div>
       </div>
     </div>
 
@@ -131,7 +133,7 @@ function focusIrkutsk() {
       </template>
       <p v-else class="place-description">Пока нет отмеченных мест.</p>
       <div class="editor-note">
-        Точки выбирает автор проекта.<br />Пользовательских отметок нет.
+        Адреса из открытых публикаций.<br />Источники указаны в карточке.
         <a
           :href="site.map.externalUrl"
           target="_blank"
@@ -140,13 +142,5 @@ function focusIrkutsk() {
         /></a>
       </div>
     </aside>
-  </div>
-  <div class="map-disclaimer">
-    <Icon name="info" />
-    <p>
-      Информационный проект с элементами юмора.
-      <strong>Не является официальной эпидемиологической картой.</strong>
-      <a href="#rules">О проекте и правилах</a>
-    </p>
   </div>
 </template>
