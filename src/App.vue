@@ -140,7 +140,7 @@ onBeforeUnmount(() => {
     >
       ×
     </button>
-    <p class="eyebrow">МУЗЫКАЛЬНАЯ ПАСХАЛКА</p>
+    <p class="eyebrow">МУЗЫКАЛЬНАЯ ПАСХАЛочка</p>
     <h2 id="music-title">Та самая «Чума».</h2>
     <a
       class="button"
