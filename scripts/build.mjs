@@ -3,6 +3,7 @@ import { createSSRApp } from "vue";
 import { renderToString } from "vue/server-renderer";
 import { createMemoryHistory, createRouter } from "vue-router";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 
 await build();
 
@@ -19,20 +20,23 @@ const metrikaHosts = [
 ];
 const metrikaSources = metrikaHosts.map((host) => `https://${host}`).join(" ");
 const metrikaSockets = metrikaHosts.map((host) => `wss://${host}`).join(" ");
-function contentSecurityPolicy() {
+function contentSecurityPolicy(advertisingEnabled, schema) {
   const adScripts = "https://yastatic.net https://*.yandex.ru https://*.adfox.ru https://yandex.ru https://yandex.com";
   const adResources = "https://yastatic.net https://*.yandex.net https://*.adfox.ru https://*.yandex.ru https://yandex.ru https://yandex.com";
   const adFrames = "https://yandexadexchange.net https://*.yandexadexchange.net https://yastatic.net https://*.yandex.ru https://*.adfox.ru";
+  // Keep the advertising SDK's additional permissions out of builds without ads.
+  // Hash only our JSON-LD; executable inline scripts remain blocked in that case.
+  const schemaHash = `'sha256-${createHash("sha256").update(schema).digest("base64")}'`;
   return [
     "default-src 'self'",
-    `script-src 'self' 'unsafe-inline' 'unsafe-eval' ${metrikaSources} ${adScripts}`,
-    "style-src 'self' 'unsafe-inline' https://yastatic.net https://*.adfox.ru",
-    `img-src 'self' data: ${metrikaSources} ${adResources}`,
-    "font-src 'self' https://yastatic.net data:",
-    `connect-src 'self' blob: ${metrikaSources} ${metrikaSockets} ${adResources}`,
-    `frame-src https://yandex.ru blob: ${metrikaSources} ${adFrames}`,
-    `child-src blob: ${metrikaSources} ${adFrames}`,
-    `media-src blob: data: ${adResources}`,
+    `script-src 'self' ${advertisingEnabled ? `'unsafe-inline' 'unsafe-eval' ${adScripts}` : schemaHash} ${metrikaSources} https://yastatic.net`,
+    `style-src 'self'${advertisingEnabled ? " 'unsafe-inline' https://yastatic.net https://*.adfox.ru" : ""}`,
+    `img-src 'self' data: ${metrikaSources}${advertisingEnabled ? ` ${adResources}` : ""}`,
+    `font-src 'self'${advertisingEnabled ? " https://yastatic.net data:" : ""}`,
+    `connect-src 'self' blob: ${metrikaSources} ${metrikaSockets}${advertisingEnabled ? ` ${adResources}` : ""}`,
+    `frame-src https://yandex.ru blob: ${metrikaSources}${advertisingEnabled ? ` ${adFrames}` : ""}`,
+    `child-src blob: ${metrikaSources}${advertisingEnabled ? ` ${adFrames}` : ""}`,
+    `media-src 'self'${advertisingEnabled ? ` blob: data: ${adResources}` : ""}`,
     "worker-src 'self' blob:",
     "object-src 'none'",
     "base-uri 'none'",
@@ -61,6 +65,7 @@ try {
   const { seoPages, getSeoTags, serializeStructuredData } = await server.ssrLoadModule("/src/seo.ts");
   const { site } = await server.ssrLoadModule("/src/data/content.ts");
   const { privacy } = await server.ssrLoadModule("/src/data/privacy.ts");
+  const { advertisingEnabled } = await server.ssrLoadModule("/src/config.ts");
   const routes = [];
   for (const page of seoPages) {
     const { default: component } = await server.ssrLoadModule(`/src/views/${page.component}.vue`);
@@ -76,7 +81,7 @@ try {
       `<meta ${tag.attribute}="${tag.key}" content="${escapeHtml(tag.content)}" />`,
     );
     const head = [
-      `<meta http-equiv="Content-Security-Policy" content="${escapeHtml(contentSecurityPolicy())}" />`,
+      `<meta http-equiv="Content-Security-Policy" content="${escapeHtml(contentSecurityPolicy(advertisingEnabled, schema))}" />`,
       `<title>${escapeHtml(page.title)}</title>`,
       ...tags,
       `<link rel="canonical" href="${config.origin}${page.path}" />`,

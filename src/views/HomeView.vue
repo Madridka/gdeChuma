@@ -107,4 +107,15 @@ import { facts, questions, history, placeWord, points } from "../data/content";
     </div>
   </section>
   <CityCheck />
+  <figure class="footer-meme" aria-label="Мемная пауза" data-nosnippet>
+    <img
+      src="/images/plague-dogs-meme.png"
+      alt="Мем с двумя собаками в костюмах докторов чумы: «Вот такая вот чума, собачка»."
+      width="1136"
+      height="641"
+      loading="lazy"
+      decoding="async"
+    />
+    <figcaption>Мемная пауза</figcaption>
+  </figure>
 </template>

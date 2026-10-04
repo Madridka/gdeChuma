@@ -840,6 +840,22 @@ h2 {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.footer-meme {
+  width: min(720px, 100%);
+  margin: 48px auto 0;
+}
+.footer-meme img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+}
+.footer-meme figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
 .site-footer {
   margin-top: 49px;
   background: #fff;
@@ -1948,6 +1964,27 @@ h2 {
   color: var(--muted);
 }
 .document-external a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.document-operator {
+  margin-top: 36px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+.document-operator h2 {
+  font-size: inherit;
+  font-weight: 600;
+  line-height: inherit;
+}
+.document-operator p {
+  margin-top: 6px;
+}
+.document-operator a {
+  color: inherit;
   text-decoration: underline;
   text-underline-offset: 3px;
 }

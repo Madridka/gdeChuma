@@ -17,13 +17,6 @@ import { openCookieSettings } from "../cookieConsent";
     <p class="document-date">
       Редакция от <time :datetime="privacy.updatedAt">{{ formatDate(privacy.updatedAt) }}</time>
     </p>
-    <section class="document-contact" aria-labelledby="operator-title">
-      <h2 id="operator-title">Оператор и контакт для обращений</h2>
-      <p>Владелец сайта и оператор персональных данных: {{ privacy.operator }}.</p>
-      <p>Вопросы об обработке данных и обращения:
-        <a class="document-inline-link" :href="`mailto:${privacy.email}`">{{ privacy.email }}</a>.
-      </p>
-    </section>
     <ol class="document-rules">
       <li v-for="section in privacy.sections" :key="section.title">
         <h2>{{ section.title }}</h2>
@@ -35,10 +28,18 @@ import { openCookieSettings } from "../cookieConsent";
       <RouterLink class="document-inline-link" to="/consent/">Текст согласия на обработку данных</RouterLink>
     </div>
     <p class="document-external">
-      <a href="https://yandex.ru/legal/metrica_termsofuse/" target="_blank" rel="noopener noreferrer">Условия Яндекс Метрики</a> ·
+      <a href="https://yandex.ru/legal/metrica_termsofuse/ru/" target="_blank" rel="noopener noreferrer">Условия и обработка данных Метрики</a> ·
       <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener noreferrer">Конфиденциальность Яндекса</a> ·
       <a href="https://yandex.ru/support/metrica/ru/general/cookie-usage" target="_blank" rel="noopener noreferrer">Cookie Метрики</a> ·
+      <a href="https://yandex.ru/support/metrica/ru/general/opt-out" target="_blank" rel="noopener noreferrer">Блокировщик Яндекс Метрики</a> ·
       <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Конфиденциальность GitHub</a>
     </p>
+    <section class="document-operator" aria-labelledby="operator-title" data-nosnippet>
+      <h2 id="operator-title">Оператор и контакт для обращений</h2>
+      <p>Владелец сайта и оператор персональных данных: {{ privacy.operator }}.</p>
+      <p>Вопросы об обработке данных и обращения:
+        <a :href="`mailto:${privacy.email}`">{{ privacy.email }}</a>.
+      </p>
+    </section>
   </article>
 </template>

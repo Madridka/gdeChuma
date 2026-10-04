@@ -13,12 +13,6 @@ import { openCookieSettings } from "../cookieConsent";
     <p class="document-date">
       Редакция от <time :datetime="privacy.updatedAt">{{ formatDate(privacy.updatedAt) }}</time>
     </p>
-    <section class="document-contact">
-      <h2>Оператор сайта</h2>
-      <p>{{ privacy.operator }}. Контакт для обращений:
-        <a class="document-inline-link" :href="`mailto:${privacy.email}`">{{ privacy.email }}</a>.
-      </p>
-    </section>
     <div class="consent-text">
       <p v-for="paragraph in privacy.consent" :key="paragraph">{{ paragraph }}</p>
     </div>
@@ -26,5 +20,11 @@ import { openCookieSettings } from "../cookieConsent";
       <button class="button button-outline" type="button" @click="openCookieSettings">Настроить cookie</button>
       <RouterLink class="document-inline-link" to="/privacy/">Политика конфиденциальности</RouterLink>
     </div>
+    <section class="document-operator" aria-labelledby="consent-operator-title" data-nosnippet>
+      <h2 id="consent-operator-title">Оператор сайта</h2>
+      <p>{{ privacy.operator }}. Контакт для обращений:
+        <a :href="`mailto:${privacy.email}`">{{ privacy.email }}</a>.
+      </p>
+    </section>
   </article>
 </template>
