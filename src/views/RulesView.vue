@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import { rules } from "../data/rules";
 import { formatDate, site } from "../data/content";
 </script>
@@ -35,6 +36,17 @@ import { formatDate, site } from "../data/content";
       </li>
     </ol>
     <p class="document-external">
+      <RouterLink to="/privacy/">Политика конфиденциальности</RouterLink>
+      ·
+      <RouterLink to="/consent/">Согласие на обработку данных</RouterLink>
+      ·
+      <a
+        href="https://yandex.ru/legal/metrica_termsofuse/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Условия Яндекс Метрики</a
+      >
+      ·
       <a
         href="https://yandex.ru/legal/confidential/"
         target="_blank"

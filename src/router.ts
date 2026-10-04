@@ -1,4 +1,6 @@
+import { nextTick } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
+import { trackPageView } from "./analytics";
 import HomeView from "./views/HomeView.vue";
 
 export const router = createRouter({
@@ -18,6 +20,16 @@ export const router = createRouter({
       path: "/project/",
       component: () => import("./views/ProjectView.vue"),
       meta: { title: "О проекте — ГдеЧУМА" },
+    },
+    {
+      path: "/privacy/",
+      component: () => import("./views/PrivacyView.vue"),
+      meta: { title: "Политика конфиденциальности — ГдеЧУМА" },
+    },
+    {
+      path: "/consent/",
+      component: () => import("./views/ConsentView.vue"),
+      meta: { title: "Согласие на обработку данных — ГдеЧУМА" },
     },
     { path: "/:pathMatch(.*)*", redirect: "/" },
   ],
@@ -48,10 +60,13 @@ router.beforeEach((to) =>
     ? { path: "/rules/", replace: true }
     : true,
 );
-router.afterEach((to) => {
+router.afterEach(async (to, _from, failure) => {
+  if (failure) return;
   document.title = String(to.meta.title ?? "ГдеЧУМА");
   const canonical = document.querySelector<HTMLLinkElement>(
     'link[rel="canonical"]',
   );
   if (canonical) canonical.href = new URL(to.path, "https://gdechuma.ru").href;
+  await nextTick();
+  trackPageView(to.fullPath);
 });

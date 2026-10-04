@@ -1728,12 +1728,131 @@ h2 {
   color: var(--muted);
 }
 .footer-links a:hover,
+.footer-links button:hover,
 .footer-links .router-link-active {
   color: var(--accent-dark);
 }
 .footer-inner .footer-caption {
   width: 100%;
   order: 4;
+}
+.footer-cookie-settings {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+.document-inline-link {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.privacy-actions {
+  margin-top: 32px;
+}
+.consent-text {
+  margin-top: 32px;
+}
+.consent-text p {
+  margin-top: 20px;
+  color: var(--muted);
+  line-height: 1.85;
+}
+.cookie-banner {
+  position: fixed;
+  z-index: 700;
+  inset: auto 20px max(20px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  width: min(1080px, calc(100% - 40px));
+  max-height: 75dvh;
+  overflow-y: auto;
+  margin-inline: auto;
+  padding: 26px;
+  border: 1px solid #ffd4b8;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 40px #23252824;
+}
+.cookie-copy {
+  flex: 1;
+  min-width: 0;
+}
+.cookie-copy h2 {
+  font-size: 1.125rem;
+  margin-bottom: 12px;
+}
+.cookie-copy p {
+  font-size: 0.8125rem;
+  color: var(--muted);
+  margin-top: 8px;
+}
+.cookie-copy a {
+  color: var(--accent-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.cookie-actions {
+  display: grid;
+  gap: 10px;
+  flex-shrink: 0;
+  min-width: 160px;
+}
+.cookie-close {
+  border: 0;
+  padding: 6px 0;
+  color: var(--muted);
+  background: transparent;
+  font-size: 0.75rem;
+  text-decoration: underline;
+}
+.cookie-banner-space {
+  height: 260px;
+}
+.map-consent {
+  padding: 24px;
+  width: 420px;
+}
+.map-consent > .icon {
+  color: var(--accent-dark);
+  margin-bottom: 12px;
+}
+.map-consent strong {
+  display: block;
+  margin-bottom: 8px;
+}
+.map-consent p {
+  font-size: 0.8125rem;
+  color: var(--muted);
+}
+.map-consent .button {
+  margin-top: 16px;
+}
+@media (max-width: 760px) {
+  .cookie-banner {
+    inset-inline: 12px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: calc(100% - 24px);
+    display: block;
+    padding: 20px;
+  }
+  .cookie-actions {
+    margin-top: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-width: 0;
+  }
+  .cookie-actions .button {
+    padding-inline: 12px;
+  }
+  .cookie-close {
+    grid-column: 1 / -1;
+  }
+  .cookie-banner-space {
+    height: 400px;
+  }
 }
 .document-page {
   padding-top: 38px;

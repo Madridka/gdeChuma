@@ -2,6 +2,8 @@
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { RouterLink, RouterView, useRoute } from "vue-router";
 import Icon from "./components/Icon.vue";
+import CookieBanner from "./components/CookieBanner.vue";
+import { cookieSettingsOpen, openCookieSettings } from "./cookieConsent";
 import { site } from "./data/content";
 const route = useRoute();
 const easterEggOpen = ref(false);
@@ -99,7 +101,7 @@ onBeforeUnmount(() => {
       <span class="header-note">Неофициально. Без паники.</span>
     </div>
   </header>
-  <main id="main" class="page-container" tabindex="-1"><RouterView /></main>
+  <main id="main" class="page-container ym-disable-keys" tabindex="-1"><RouterView /></main>
   <footer class="site-footer">
     <div class="footer-inner">
       <RouterLink class="brand footer-brand" :to="{ path: '/', hash: '#map' }"
@@ -109,7 +111,12 @@ onBeforeUnmount(() => {
         ></RouterLink
       >
       <nav class="footer-links" aria-label="О сайте">
-        <a href="/project/">О проекте</a><a href="/rules/">Правила</a>
+        <RouterLink to="/project/">О проекте</RouterLink>
+        <RouterLink to="/rules/">Правила</RouterLink>
+        <RouterLink to="/privacy/">Политика конфиденциальности</RouterLink>
+        <button class="footer-cookie-settings" type="button" @click="openCookieSettings">
+          Настроить cookie
+        </button>
       </nav>
       <button
         class="easter-egg"
@@ -124,6 +131,8 @@ onBeforeUnmount(() => {
       <p class="footer-caption">© 2026 · Сделано с юмором. Читать с головой.</p>
     </div>
   </footer>
+  <div v-if="cookieSettingsOpen" class="cookie-banner-space" aria-hidden="true"></div>
+  <CookieBanner />
   <dialog
     id="vova-track"
     ref="musicDialog"

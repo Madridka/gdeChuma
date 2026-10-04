@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { RouterLink } from "vue-router";
 import Icon from "../components/Icon.vue";
 </script>
 <template>
@@ -54,6 +55,42 @@ import Icon from "../components/Icon.vue";
         </p>
       </section>
     </div>
+    <section class="document-contact" aria-labelledby="analytics-title">
+      <h2 id="analytics-title">Статистика посещений и Яндекс Метрика</h2>
+      <p>
+        С вашего согласия на сайте ведётся сбор данных с помощью Яндекс Метрики
+        ООО «ЯНДЕКС». Она помогает
+        понять, сколько людей посещает сайт, откуда они приходят и какие страницы
+        читают. Сервис может собирать IP-адрес, сведения об устройстве и браузере,
+        операционную систему, cookies, адреса страниц и действия на сайте. После согласия включены
+        карта кликов и Вебвизор для анализа кликов, прокрутки и взаимодействия
+        со страницами. Запись полей ввода и введённого текста отключена.
+      </p>
+      <p>
+        Данные передаются Яндексу и обрабатываются по условиям сервиса и
+        политике конфиденциальности Яндекса. До нажатия «Принять» и при отказе
+        счётчик не запускается. Отозвать согласие можно через «Настроить cookie»
+        внизу любой страницы. Подробнее — в
+        <RouterLink class="document-inline-link" to="/privacy/">Политике конфиденциальности</RouterLink>;
+        <RouterLink class="document-inline-link" to="/consent/">согласие</RouterLink>
+        опубликовано отдельно.
+      </p>
+      <p class="document-external">
+        <a
+          href="https://yandex.ru/legal/metrica_termsofuse/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Условия Яндекс Метрики</a
+        >
+        ·
+        <a
+          href="https://yandex.ru/legal/confidential/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Конфиденциальность Яндекса</a
+        >
+      </p>
+    </section>
     <div class="document-contact">
       <h2>Источники — рядом. Условия — отдельно.</h2>
       <p>

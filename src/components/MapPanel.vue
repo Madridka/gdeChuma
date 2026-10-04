@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, ref } from "vue";
+import { computed, defineAsyncComponent, ref, watch } from "vue";
+import { cookieChoice } from "../cookieConsent";
 import { formatDate, markerNotice, placeWord, site } from "../data/content";
 import type { MapPoint } from "../data/content";
 import Icon from "./Icon.vue";
@@ -14,6 +15,17 @@ const selected = computed(
 const mapStatus = ref<"loading" | "ready" | "error">("loading");
 const reloadKey = ref(0);
 const focusRequest = ref(0);
+const manualMapAllowed = ref(false);
+const mapEnabled = computed(() => cookieChoice.value === "accepted" || manualMapAllowed.value);
+watch(cookieChoice, () => {
+  manualMapAllowed.value = false;
+  mapStatus.value = "loading";
+  reloadKey.value++;
+});
+function loadMap() {
+  manualMapAllowed.value = true;
+  mapStatus.value = "loading";
+}
 const MapCanvas = defineAsyncComponent({
   loader: () => import("./MapCanvas.vue"),
   timeout: 15000,
@@ -56,17 +68,29 @@ function focusIrkutsk() {
       </div>
       <div class="map-surface" aria-label="Карта мест, упомянутых в новостях">
         <MapCanvas
+          v-if="mapEnabled"
           :key="reloadKey"
           :points="points"
           :selected-id="selectedId"
           :focus-request="focusRequest"
           @status="mapStatus = $event"
         />
-        <div v-if="mapStatus === 'loading'" class="map-message" role="status">
+        <div v-if="!mapEnabled" class="map-message map-consent">
+          <Icon name="pin" />
+          <div>
+            <strong>Яндекс Карта — по вашему выбору</strong>
+            <p>При загрузке карты Яндекс получит технические сведения и сможет использовать cookie.
+              <a class="document-inline-link" href="/privacy/">Подробнее</a>.
+              Счётчик Метрики сайта останется отключённым без согласия в баннере.
+            </p>
+          </div>
+          <button class="button button-small" type="button" @click="loadMap">Загрузить карту</button>
+        </div>
+        <div v-if="mapEnabled && mapStatus === 'loading'" class="map-message" role="status">
           Загружаем карту…
         </div>
         <div
-          v-if="mapStatus === 'error'"
+          v-if="mapEnabled && mapStatus === 'error'"
           class="map-message map-error"
           role="status"
         >

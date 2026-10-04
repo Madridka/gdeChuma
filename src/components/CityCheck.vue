@@ -42,11 +42,12 @@ function checkCity() {
       <h2 id="city-heading">Что известно по вашему городу?</h2>
       <p>Введите город или адрес. Покажем сведения из подборки.</p>
     </div>
-    <form class="city-form" @submit.prevent="checkCity">
+    <form class="city-form ym-disable-submit" @submit.prevent="checkCity">
       <label for="city-query">Город или адрес</label>
       <div class="city-input-row">
         <input
           id="city-query"
+          class="ym-disable-keys"
           v-model="query"
           type="text"
           name="city"
@@ -83,7 +84,7 @@ function checkCity() {
         <span class="news-category">{{
           result.isIrkutsk ? "ПО СООБЩЕНИЯМ ВЛАСТЕЙ" : "СВЕДЕНИЯ В ПОДБОРКЕ"
         }}</span>
-        <p class="city-result-query">{{ result.city }}</p>
+        <p class="city-result-query ym-hide-content">{{ result.city }}</p>
         <h3>
           {{
             result.isIrkutsk
