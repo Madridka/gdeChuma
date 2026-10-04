@@ -1,0 +1,823 @@
+{
+  "origin": {
+    "name": "Иркутск",
+    "latitude": 52.2869,
+    "longitude": 104.305
+  },
+  "method": "great-circle",
+  "earthRadiusKm": 6371.0088,
+  "roundingKm": 10,
+  "cities": [
+    {
+      "name": "Иркутск",
+      "aliases": [
+        "Irkutsk",
+        "Иркутска",
+        "Иркутске"
+      ],
+      "latitude": 52.2869,
+      "longitude": 104.305,
+      "distanceKm": 0
+    },
+    {
+      "name": "Москва",
+      "aliases": [
+        "Moscow",
+        "Moskva",
+        "Москвы",
+        "Москве"
+      ],
+      "latitude": 55.7558,
+      "longitude": 37.6173,
+      "distanceKm": 4200
+    },
+    {
+      "name": "Санкт-Петербург",
+      "aliases": [
+        "Saint Petersburg",
+        "St Petersburg",
+        "СПб",
+        "Питер",
+        "Петербург",
+        "Санкт-Петербурге"
+      ],
+      "latitude": 59.9343,
+      "longitude": 30.3351,
+      "distanceKm": 4420
+    },
+    {
+      "name": "Новосибирск",
+      "aliases": [
+        "Novosibirsk"
+      ],
+      "latitude": 55.0084,
+      "longitude": 82.9357,
+      "distanceKm": 1430
+    },
+    {
+      "name": "Екатеринбург",
+      "aliases": [
+        "Yekaterinburg",
+        "Ekaterinburg"
+      ],
+      "latitude": 56.8389,
+      "longitude": 60.6057,
+      "distanceKm": 2810
+    },
+    {
+      "name": "Казань",
+      "aliases": [
+        "Kazan",
+        "Казани"
+      ],
+      "latitude": 55.7961,
+      "longitude": 49.1064,
+      "distanceKm": 3530
+    },
+    {
+      "name": "Нижний Новгород",
+      "aliases": [
+        "Nizhny Novgorod"
+      ],
+      "latitude": 56.3269,
+      "longitude": 44.0059,
+      "distanceKm": 3810
+    },
+    {
+      "name": "Красноярск",
+      "aliases": [
+        "Krasnoyarsk"
+      ],
+      "latitude": 56.0153,
+      "longitude": 92.8932,
+      "distanceKm": 850
+    },
+    {
+      "name": "Челябинск",
+      "aliases": [
+        "Chelyabinsk"
+      ],
+      "latitude": 55.1644,
+      "longitude": 61.4368,
+      "distanceKm": 2790
+    },
+    {
+      "name": "Самара",
+      "aliases": [
+        "Samara"
+      ],
+      "latitude": 53.1959,
+      "longitude": 50.1002,
+      "distanceKm": 3560
+    },
+    {
+      "name": "Уфа",
+      "aliases": [
+        "Ufa",
+        "Уфе"
+      ],
+      "latitude": 54.7388,
+      "longitude": 55.9721,
+      "distanceKm": 3140
+    },
+    {
+      "name": "Ростов-на-Дону",
+      "aliases": [
+        "Rostov-on-Don"
+      ],
+      "latitude": 47.2357,
+      "longitude": 39.7015,
+      "distanceKm": 4520
+    },
+    {
+      "name": "Омск",
+      "aliases": [
+        "Omsk"
+      ],
+      "latitude": 54.9885,
+      "longitude": 73.3242,
+      "distanceKm": 2050
+    },
+    {
+      "name": "Краснодар",
+      "aliases": [
+        "Krasnodar"
+      ],
+      "latitude": 45.0355,
+      "longitude": 38.9753,
+      "distanceKm": 4700
+    },
+    {
+      "name": "Воронеж",
+      "aliases": [
+        "Voronezh"
+      ],
+      "latitude": 51.6608,
+      "longitude": 39.2003,
+      "distanceKm": 4310
+    },
+    {
+      "name": "Пермь",
+      "aliases": [
+        "Perm",
+        "Перми"
+      ],
+      "latitude": 58.0105,
+      "longitude": 56.2502,
+      "distanceKm": 3050
+    },
+    {
+      "name": "Волгоград",
+      "aliases": [
+        "Volgograd"
+      ],
+      "latitude": 48.708,
+      "longitude": 44.5133,
+      "distanceKm": 4130
+    },
+    {
+      "name": "Саратов",
+      "aliases": [
+        "Saratov"
+      ],
+      "latitude": 51.5336,
+      "longitude": 46.0343,
+      "distanceKm": 3890
+    },
+    {
+      "name": "Тюмень",
+      "aliases": [
+        "Tyumen",
+        "Тюмени"
+      ],
+      "latitude": 57.1522,
+      "longitude": 65.5272,
+      "distanceKm": 2510
+    },
+    {
+      "name": "Тольятти",
+      "aliases": [
+        "Tolyatti",
+        "Togliatti"
+      ],
+      "latitude": 53.5078,
+      "longitude": 49.4204,
+      "distanceKm": 3590
+    },
+    {
+      "name": "Барнаул",
+      "aliases": [
+        "Barnaul"
+      ],
+      "latitude": 53.3478,
+      "longitude": 83.7784,
+      "distanceKm": 1380
+    },
+    {
+      "name": "Махачкала",
+      "aliases": [
+        "Makhachkala"
+      ],
+      "latitude": 42.9849,
+      "longitude": 47.5047,
+      "distanceKm": 4260
+    },
+    {
+      "name": "Ижевск",
+      "aliases": [
+        "Izhevsk"
+      ],
+      "latitude": 56.8526,
+      "longitude": 53.2115,
+      "distanceKm": 3250
+    },
+    {
+      "name": "Хабаровск",
+      "aliases": [
+        "Khabarovsk"
+      ],
+      "latitude": 48.4802,
+      "longitude": 135.0719,
+      "distanceKm": 2200
+    },
+    {
+      "name": "Ульяновск",
+      "aliases": [
+        "Ulyanovsk"
+      ],
+      "latitude": 54.3142,
+      "longitude": 48.4031,
+      "distanceKm": 3620
+    },
+    {
+      "name": "Владивосток",
+      "aliases": [
+        "Vladivostok"
+      ],
+      "latitude": 43.1155,
+      "longitude": 131.8855,
+      "distanceKm": 2280
+    },
+    {
+      "name": "Ярославль",
+      "aliases": [
+        "Yaroslavl"
+      ],
+      "latitude": 57.6261,
+      "longitude": 39.8845,
+      "distanceKm": 4000
+    },
+    {
+      "name": "Ставрополь",
+      "aliases": [
+        "Stavropol"
+      ],
+      "latitude": 45.0445,
+      "longitude": 41.9691,
+      "distanceKm": 4500
+    },
+    {
+      "name": "Томск",
+      "aliases": [
+        "Tomsk",
+        "Томске"
+      ],
+      "latitude": 56.4977,
+      "longitude": 84.9744,
+      "distanceKm": 1330
+    },
+    {
+      "name": "Кемерово",
+      "aliases": [
+        "Kemerovo"
+      ],
+      "latitude": 55.3552,
+      "longitude": 86.0873,
+      "distanceKm": 1240
+    },
+    {
+      "name": "Набережные Челны",
+      "aliases": [
+        "Naberezhnye Chelny",
+        "Челны"
+      ],
+      "latitude": 55.7436,
+      "longitude": 52.3958,
+      "distanceKm": 3330
+    },
+    {
+      "name": "Оренбург",
+      "aliases": [
+        "Orenburg"
+      ],
+      "latitude": 51.7682,
+      "longitude": 55.0969,
+      "distanceKm": 3300
+    },
+    {
+      "name": "Новокузнецк",
+      "aliases": [
+        "Novokuznetsk"
+      ],
+      "latitude": 53.7575,
+      "longitude": 87.136,
+      "distanceKm": 1160
+    },
+    {
+      "name": "Балашиха",
+      "aliases": [
+        "Balashikha"
+      ],
+      "latitude": 55.7963,
+      "longitude": 37.9382,
+      "distanceKm": 4180
+    },
+    {
+      "name": "Рязань",
+      "aliases": [
+        "Ryazan"
+      ],
+      "latitude": 54.6292,
+      "longitude": 39.7364,
+      "distanceKm": 4130
+    },
+    {
+      "name": "Пенза",
+      "aliases": [
+        "Penza"
+      ],
+      "latitude": 53.1959,
+      "longitude": 45.0183,
+      "distanceKm": 3880
+    },
+    {
+      "name": "Чебоксары",
+      "aliases": [
+        "Cheboksary"
+      ],
+      "latitude": 56.1463,
+      "longitude": 47.2511,
+      "distanceKm": 3630
+    },
+    {
+      "name": "Липецк",
+      "aliases": [
+        "Lipetsk"
+      ],
+      "latitude": 52.6088,
+      "longitude": 39.5992,
+      "distanceKm": 4230
+    },
+    {
+      "name": "Калининград",
+      "aliases": [
+        "Kaliningrad"
+      ],
+      "latitude": 54.7104,
+      "longitude": 20.4522,
+      "distanceKm": 5210
+    },
+    {
+      "name": "Астрахань",
+      "aliases": [
+        "Astrakhan"
+      ],
+      "latitude": 46.3479,
+      "longitude": 48.0336,
+      "distanceKm": 4030
+    },
+    {
+      "name": "Тула",
+      "aliases": [
+        "Tula"
+      ],
+      "latitude": 54.1931,
+      "longitude": 37.6178,
+      "distanceKm": 4270
+    },
+    {
+      "name": "Киров",
+      "aliases": [
+        "Kirov"
+      ],
+      "latitude": 58.6035,
+      "longitude": 49.6679,
+      "distanceKm": 3420
+    },
+    {
+      "name": "Курск",
+      "aliases": [
+        "Kursk"
+      ],
+      "latitude": 51.7373,
+      "longitude": 36.1874,
+      "distanceKm": 4480
+    },
+    {
+      "name": "Улан-Удэ",
+      "aliases": [
+        "Ulan-Ude"
+      ],
+      "latitude": 51.8336,
+      "longitude": 107.584,
+      "distanceKm": 230
+    },
+    {
+      "name": "Сочи",
+      "aliases": [
+        "Sochi"
+      ],
+      "latitude": 43.5855,
+      "longitude": 39.7231,
+      "distanceKm": 4740
+    },
+    {
+      "name": "Тверь",
+      "aliases": [
+        "Tver"
+      ],
+      "latitude": 56.8587,
+      "longitude": 35.9176,
+      "distanceKm": 4250
+    },
+    {
+      "name": "Магнитогорск",
+      "aliases": [
+        "Magnitogorsk"
+      ],
+      "latitude": 53.4072,
+      "longitude": 58.9791,
+      "distanceKm": 2990
+    },
+    {
+      "name": "Сургут",
+      "aliases": [
+        "Surgut"
+      ],
+      "latitude": 61.254,
+      "longitude": 73.3962,
+      "distanceKm": 2100
+    },
+    {
+      "name": "Иваново",
+      "aliases": [
+        "Ivanovo"
+      ],
+      "latitude": 57.0003,
+      "longitude": 40.9739,
+      "distanceKm": 3960
+    },
+    {
+      "name": "Брянск",
+      "aliases": [
+        "Bryansk"
+      ],
+      "latitude": 53.2436,
+      "longitude": 34.3634,
+      "distanceKm": 4510
+    },
+    {
+      "name": "Якутск",
+      "aliases": [
+        "Yakutsk"
+      ],
+      "latitude": 62.0355,
+      "longitude": 129.6755,
+      "distanceKm": 1860
+    },
+    {
+      "name": "Владимир",
+      "aliases": [
+        "Vladimir"
+      ],
+      "latitude": 56.129,
+      "longitude": 40.4066,
+      "distanceKm": 4030
+    },
+    {
+      "name": "Чита",
+      "aliases": [
+        "Chita"
+      ],
+      "latitude": 52.0352,
+      "longitude": 113.501,
+      "distanceKm": 630
+    },
+    {
+      "name": "Белгород",
+      "aliases": [
+        "Belgorod"
+      ],
+      "latitude": 50.5954,
+      "longitude": 36.5873,
+      "distanceKm": 4520
+    },
+    {
+      "name": "Калуга",
+      "aliases": [
+        "Kaluga"
+      ],
+      "latitude": 54.5138,
+      "longitude": 36.2612,
+      "distanceKm": 4340
+    },
+    {
+      "name": "Смоленск",
+      "aliases": [
+        "Smolensk"
+      ],
+      "latitude": 54.7826,
+      "longitude": 32.0453,
+      "distanceKm": 4570
+    },
+    {
+      "name": "Волжский",
+      "aliases": [
+        "Volzhsky"
+      ],
+      "latitude": 48.7858,
+      "longitude": 44.7797,
+      "distanceKm": 4110
+    },
+    {
+      "name": "Череповец",
+      "aliases": [
+        "Cherepovets"
+      ],
+      "latitude": 59.1269,
+      "longitude": 37.9091,
+      "distanceKm": 4050
+    },
+    {
+      "name": "Саранск",
+      "aliases": [
+        "Saransk"
+      ],
+      "latitude": 54.1809,
+      "longitude": 45.1867,
+      "distanceKm": 3820
+    },
+    {
+      "name": "Вологда",
+      "aliases": [
+        "Vologda"
+      ],
+      "latitude": 59.2205,
+      "longitude": 39.8915,
+      "distanceKm": 3940
+    },
+    {
+      "name": "Архангельск",
+      "aliases": [
+        "Arkhangelsk"
+      ],
+      "latitude": 64.5399,
+      "longitude": 40.5158,
+      "distanceKm": 3770
+    },
+    {
+      "name": "Мурманск",
+      "aliases": [
+        "Murmansk"
+      ],
+      "latitude": 68.9585,
+      "longitude": 33.0827,
+      "distanceKm": 4000
+    },
+    {
+      "name": "Петрозаводск",
+      "aliases": [
+        "Petrozavodsk"
+      ],
+      "latitude": 61.7891,
+      "longitude": 34.3596,
+      "distanceKm": 4140
+    },
+    {
+      "name": "Йошкар-Ола",
+      "aliases": [
+        "Yoshkar-Ola"
+      ],
+      "latitude": 56.6328,
+      "longitude": 47.8958,
+      "distanceKm": 3570
+    },
+    {
+      "name": "Кострома",
+      "aliases": [
+        "Kostroma"
+      ],
+      "latitude": 57.7679,
+      "longitude": 40.9269,
+      "distanceKm": 3930
+    },
+    {
+      "name": "Новороссийск",
+      "aliases": [
+        "Novorossiysk"
+      ],
+      "latitude": 44.7239,
+      "longitude": 37.7688,
+      "distanceKm": 4800
+    },
+    {
+      "name": "Тамбов",
+      "aliases": [
+        "Tambov"
+      ],
+      "latitude": 52.7212,
+      "longitude": 41.4523,
+      "distanceKm": 4120
+    },
+    {
+      "name": "Орёл",
+      "aliases": [
+        "Oryol",
+        "Orel"
+      ],
+      "latitude": 52.9686,
+      "longitude": 36.069,
+      "distanceKm": 4430
+    },
+    {
+      "name": "Нижневартовск",
+      "aliases": [
+        "Nizhnevartovsk"
+      ],
+      "latitude": 60.9397,
+      "longitude": 76.5696,
+      "distanceKm": 1930
+    },
+    {
+      "name": "Нижнекамск",
+      "aliases": [
+        "Nizhnekamsk"
+      ],
+      "latitude": 55.6384,
+      "longitude": 51.8196,
+      "distanceKm": 3370
+    },
+    {
+      "name": "Нижний Тагил",
+      "aliases": [
+        "Nizhny Tagil"
+      ],
+      "latitude": 57.9101,
+      "longitude": 59.9813,
+      "distanceKm": 2830
+    },
+    {
+      "name": "Братск",
+      "aliases": [
+        "Bratsk"
+      ],
+      "latitude": 56.1514,
+      "longitude": 101.6331,
+      "distanceKm": 460
+    },
+    {
+      "name": "Ангарск",
+      "aliases": [
+        "Angarsk"
+      ],
+      "latitude": 52.5448,
+      "longitude": 103.8882,
+      "distanceKm": 40
+    },
+    {
+      "name": "Усолье-Сибирское",
+      "aliases": [
+        "Usolye-Sibirskoye"
+      ],
+      "latitude": 52.7514,
+      "longitude": 103.6456,
+      "distanceKm": 70
+    },
+    {
+      "name": "Шелехов",
+      "aliases": [
+        "Shelekhov"
+      ],
+      "latitude": 52.2122,
+      "longitude": 104.0974,
+      "distanceKm": 20
+    },
+    {
+      "name": "Абакан",
+      "aliases": [
+        "Abakan"
+      ],
+      "latitude": 53.7212,
+      "longitude": 91.4424,
+      "distanceKm": 870
+    },
+    {
+      "name": "Кызыл",
+      "aliases": [
+        "Kyzyl"
+      ],
+      "latitude": 51.7191,
+      "longitude": 94.4378,
+      "distanceKm": 680
+    },
+    {
+      "name": "Благовещенск",
+      "aliases": [
+        "Blagoveshchensk"
+      ],
+      "latitude": 50.2907,
+      "longitude": 127.5272,
+      "distanceKm": 1620
+    },
+    {
+      "name": "Южно-Сахалинск",
+      "aliases": [
+        "Yuzhno-Sakhalinsk"
+      ],
+      "latitude": 46.959,
+      "longitude": 142.738,
+      "distanceKm": 2800
+    },
+    {
+      "name": "Петропавловск-Камчатский",
+      "aliases": [
+        "Petropavlovsk-Kamchatsky"
+      ],
+      "latitude": 53.037,
+      "longitude": 158.6559,
+      "distanceKm": 3580
+    },
+    {
+      "name": "Магадан",
+      "aliases": [
+        "Magadan"
+      ],
+      "latitude": 59.5682,
+      "longitude": 150.8085,
+      "distanceKm": 2940
+    },
+    {
+      "name": "Норильск",
+      "aliases": [
+        "Norilsk"
+      ],
+      "latitude": 69.3558,
+      "longitude": 88.1893,
+      "distanceKm": 2070
+    },
+    {
+      "name": "Сыктывкар",
+      "aliases": [
+        "Syktyvkar"
+      ],
+      "latitude": 61.6688,
+      "longitude": 50.8365,
+      "distanceKm": 3300
+    },
+    {
+      "name": "Элиста",
+      "aliases": [
+        "Elista"
+      ],
+      "latitude": 46.3077,
+      "longitude": 44.2558,
+      "distanceKm": 4280
+    },
+    {
+      "name": "Нальчик",
+      "aliases": [
+        "Nalchik"
+      ],
+      "latitude": 43.4846,
+      "longitude": 43.6071,
+      "distanceKm": 4490
+    },
+    {
+      "name": "Владикавказ",
+      "aliases": [
+        "Vladikavkaz"
+      ],
+      "latitude": 43.025,
+      "longitude": 44.681,
+      "distanceKm": 4450
+    },
+    {
+      "name": "Грозный",
+      "aliases": [
+        "Grozny"
+      ],
+      "latitude": 43.3178,
+      "longitude": 45.6949,
+      "distanceKm": 4360
+    },
+    {
+      "name": "Ханты-Мансийск",
+      "aliases": [
+        "Khanty-Mansiysk"
+      ],
+      "latitude": 61.0042,
+      "longitude": 69.0019,
+      "distanceKm": 2330
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { RouterLink, RouterView, useRoute } from "vue-router";
 import Icon from "./components/Icon.vue";
 import CookieBanner from "./components/CookieBanner.vue";
-import { cookieSettingsOpen, openCookieSettings } from "./cookieConsent";
+import { openCookieSettings } from "./cookieConsent";
 import { site } from "./data/content";
 const route = useRoute();
 const easterEggOpen = ref(false);
@@ -131,7 +131,6 @@ onBeforeUnmount(() => {
       <p class="footer-caption">© 2026 · Сделано с юмором. Читать с головой.</p>
     </div>
   </footer>
-  <div v-if="cookieSettingsOpen" class="cookie-banner-space" aria-hidden="true"></div>
   <CookieBanner />
   <dialog
     id="vova-track"
@@ -156,7 +155,7 @@ onBeforeUnmount(() => {
       :href="site.songUrl"
       target="_blank"
       rel="noopener noreferrer"
-      >Иракли — «Вова-чума». <Icon name="external"
+      >Иракли — «Вова-чума» · Яндекс Музыка <Icon name="external"
     /></a>
     <small
       >Запись откроется по ссылке. Автоматического воспроизведения нет.</small

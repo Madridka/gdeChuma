@@ -3,6 +3,8 @@ import Icon from "../components/Icon.vue";
 import MapPanel from "../components/MapPanel.vue";
 import CityCheck from "../components/CityCheck.vue";
 import NewsFeed from "../components/NewsFeed.vue";
+import YandexAd from "../components/YandexAd.vue";
+import { advertisingEnabled } from "../config";
 import { facts, questions, history, placeWord, points } from "../data/content";
 </script>
 <template>
@@ -14,7 +16,8 @@ import { facts, questions, history, placeWord, points } from "../data/content";
         </p>
         <h1 id="map-heading">Где чума? <span>Без паники.</span></h1>
         <p class="intro-description">
-          Смотрим, о чём пишут. Разбираемся, что известно.
+          Новости о чуме, публикации об Иркутской области и карта упомянутых
+          мест. Разбираемся, что известно, по открытым источникам.
         </p>
       </div>
       <div class="intro-stamp">
@@ -29,6 +32,7 @@ import { facts, questions, history, placeWord, points } from "../data/content";
     <MapPanel :points="points" />
   </section>
   <NewsFeed />
+  <YandexAd v-if="advertisingEnabled" />
   <section
     id="about"
     class="content-section about-section"

@@ -98,7 +98,7 @@ onBeforeUnmount(() => observer?.disconnect());
     <div class="section-heading">
       <div>
         <p class="eyebrow">01 / ИНФОПОВОД И КОНТЕКСТ</p>
-        <h2 id="news-heading">Что пишут про чуму</h2>
+        <h2 id="news-heading">Новости о чуме: публикации и мнения</h2>
       </div>
       <p class="section-meta">
         Подборка обновлена<br /><time :datetime="site.updatedAt">{{

@@ -1,6 +1,7 @@
 import { nextTick } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import { trackPageView } from "./analytics";
+import { applyPageSeo, getPageSeo } from "./seo";
 import HomeView from "./views/HomeView.vue";
 
 export const router = createRouter({
@@ -9,27 +10,27 @@ export const router = createRouter({
     {
       path: "/",
       component: HomeView,
-      meta: { title: "ГдеЧУМА — смотрим новости без паники" },
+      meta: getPageSeo("/"),
     },
     {
       path: "/rules/",
       component: () => import("./views/RulesView.vue"),
-      meta: { title: "Правила и условия — ГдеЧУМА" },
+      meta: getPageSeo("/rules/"),
     },
     {
       path: "/project/",
       component: () => import("./views/ProjectView.vue"),
-      meta: { title: "О проекте — ГдеЧУМА" },
+      meta: getPageSeo("/project/"),
     },
     {
       path: "/privacy/",
       component: () => import("./views/PrivacyView.vue"),
-      meta: { title: "Политика конфиденциальности — ГдеЧУМА" },
+      meta: getPageSeo("/privacy/"),
     },
     {
       path: "/consent/",
       component: () => import("./views/ConsentView.vue"),
-      meta: { title: "Согласие на обработку данных — ГдеЧУМА" },
+      meta: getPageSeo("/consent/"),
     },
     { path: "/:pathMatch(.*)*", redirect: "/" },
   ],
@@ -62,11 +63,7 @@ router.beforeEach((to) =>
 );
 router.afterEach(async (to, _from, failure) => {
   if (failure) return;
-  document.title = String(to.meta.title ?? "ГдеЧУМА");
-  const canonical = document.querySelector<HTMLLinkElement>(
-    'link[rel="canonical"]',
-  );
-  if (canonical) canonical.href = new URL(to.path, "https://gdechuma.ru").href;
+  applyPageSeo(to.path);
   await nextTick();
   trackPageView(to.fullPath);
 });
