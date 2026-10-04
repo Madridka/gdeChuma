@@ -142,13 +142,12 @@ onBeforeUnmount(() => {
     </button>
     <p class="eyebrow">МУЗЫКАЛЬНАЯ ПАСХАЛКА</p>
     <h2 id="music-title">Та самая «Чума».</h2>
-    <p>Этот вариант можно просто послушать. Иракли — «Вова-чума».</p>
     <a
       class="button"
       :href="site.songUrl"
       target="_blank"
       rel="noopener noreferrer"
-      >Открыть на YouTube <Icon name="external"
+      >Иракли — «Вова-чума». <Icon name="external"
     /></a>
     <small
       >Запись откроется по ссылке. Автоматического воспроизведения нет.</small
